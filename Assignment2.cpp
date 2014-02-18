@@ -16,6 +16,7 @@ This source file is part of the
 */
 #include "Assignment2.h"
 #include "PlayingField.h"
+#include <iostream>
 
 //-------------------------------------------------------------------------------------
 Assignment2::Assignment2(void)

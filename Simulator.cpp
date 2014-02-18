@@ -1,4 +1,5 @@
 #include "Simulator.h"
+#include "BulletContactCallback.h"
 
 int Simulator::nextSimID = 0;
 
@@ -31,8 +32,11 @@ int Simulator::addObject (GameObject* o){
 	//use default collision group/mask values (dynamic/kinematic/static)
 	dynamicsWorld->addRigidBody(o->getBody());
 
+    o->context = new CollisionContext();
+    o->callback = new BulletContactCallback(*(o->body), *(o->context)); 
+
     int id = nextSimID++;
-    idList.push_back(id);
+    idList.push_back(0);
     return id;
 }
 
@@ -59,7 +63,7 @@ bool Simulator::checkHit(int o) {
             dynamicsWorld->contactPairTest(
                 objList[o]->getBody(), 
                 objList[i]->getBody(), 
-                *(objList[o]->cCallBack)
+                *(objList[o]->callback)
                 );
             
             if (objList[o]->context->hit) { 

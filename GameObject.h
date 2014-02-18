@@ -14,7 +14,8 @@ class GameObject {
 		Ogre::String name;
         
         CollisionContext* context;
-        BulletContactCallback* cCallBack; 	
+        BulletContactCallback* callback; 	
+		btRigidBody* body;
 
     protected:
 		Ogre::SceneManager* sceneMgr;
@@ -22,7 +23,6 @@ class GameObject {
 		Ogre::SceneNode* rootNode;
 		Ogre::Entity* geom;
 		btScalar mass;
-		btRigidBody* body;
 		btTransform tr;
 		btVector3 inertia;
 		OgreMotionState* motionState;
@@ -37,7 +37,7 @@ class GameObject {
 		void updateTransform();
 		void addToSimulator();
 		btRigidBody* getBody();
-        void update(float elapsedTime);
+        virtual void update(float elapsedTime) {}
 }; 
 
 #endif

@@ -44,8 +44,6 @@ void GameObject::addToSimulator() {
     body = new btRigidBody(rbInfo);
     body->setUserPointer(this);
     
-    context = new CollisionContext();
-
     if (kinematic) {
         body->setCollisionFlags(body->getCollisionFlags() | 
         btCollisionObject::CF_KINEMATIC_OBJECT);
@@ -57,7 +55,4 @@ void GameObject::addToSimulator() {
 
 btRigidBody* GameObject::getBody(){
 	return this->body;
-}
-
-void GameObject::update(float elapsedTime) {
 }

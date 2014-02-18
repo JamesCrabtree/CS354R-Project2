@@ -87,7 +87,7 @@ CPU Identifier & Features
 ******************************
 *** Starting GLX Subsystem ***
 ******************************
-GLRenderSystem::_createRenderWindow "TutorialApplication Render Window", 1920x1200 windowed  miscParams: FSAA=0 displayFrequency=50 MHz gamma=No vsync=No 
+GLRenderSystem::_createRenderWindow "TutorialApplication Render Window", 640x480 windowed  miscParams: FSAA=0 displayFrequency=50 MHz gamma=No vsync=No 
 GLXWindow::create used FBConfigID = 309
 GL_VERSION = 4.4.0 NVIDIA 331.20
 GL_VENDOR = NVIDIA Corporation
@@ -192,16 +192,16 @@ Driver Version: 4.4.0.0
  * PBuffer support: yes
  * GL 1.5 without HW-occlusion workaround: no
 Registering ResourceManager for type Texture
-DefaultWorkQueue('Root') initialising on thread 0x2111d80.
-DefaultWorkQueue('Root')::WorkerFunc - thread 0x251a680 starting.
-DefaultWorkQueue('Root')::WorkerFunc - thread 0x21dc660 starting.
-DefaultWorkQueue('Root')::WorkerFunc - thread 0x2516f60 starting.
-DefaultWorkQueue('Root')::WorkerFunc - thread 0x252b8b0 starting.
-DefaultWorkQueue('Root')::WorkerFunc - thread 0x2517670 starting.
+DefaultWorkQueue('Root') initialising on thread 0x1c0ed80.
+DefaultWorkQueue('Root')::WorkerFunc - thread 0x20176a0 starting.
+DefaultWorkQueue('Root')::WorkerFunc - thread 0x2013b10 starting.
+DefaultWorkQueue('Root')::WorkerFunc - thread 0x20288d0 starting.
+DefaultWorkQueue('Root')::WorkerFunc - thread 0x2013e20 starting.
+DefaultWorkQueue('Root')::WorkerFunc - thread 0x2014120 starting.
+DefaultWorkQueue('Root')::WorkerFunc - thread 0x2028730 starting.
+DefaultWorkQueue('Root')::WorkerFunc - thread 0x201d030 starting.
 Particle Renderer Type 'billboard' registered
-DefaultWorkQueue('Root')::WorkerFunc - thread 0x252b710 starting.
-DefaultWorkQueue('Root')::WorkerFunc - thread 0x2516af0 starting.
-DefaultWorkQueue('Root')::WorkerFunc - thread 0x2520010 starting.
+DefaultWorkQueue('Root')::WorkerFunc - thread 0x2014690 starting.
 SceneManagerFactory for type 'BspSceneManager' registered.
 Registering ResourceManager for type BspLevel
 SceneManagerFactory for type 'PCZSceneManager' registered.
@@ -409,15 +409,15 @@ Info: Freetype returned null for character 158 in font SdkTrays/Value
 Info: Freetype returned null for character 159 in font SdkTrays/Value
 Info: Freetype returned null for character 160 in font SdkTrays/Value
 Texture: SdkTrays/ValueTexture: Loading 1 faces(PF_BYTE_LA,512x256x1) with 0 generated mipmaps from Image. Internal format is PF_BYTE_LA,512x256x1.
-DefaultWorkQueue('Root') shutting down on thread 0x2111d80.
-DefaultWorkQueue('Root')::WorkerFunc - thread 0x251a680 stopped.
-DefaultWorkQueue('Root')::WorkerFunc - thread 0x21dc660 stopped.
-DefaultWorkQueue('Root')::WorkerFunc - thread 0x2516f60 stopped.
-DefaultWorkQueue('Root')::WorkerFunc - thread 0x2516af0 stopped.
-DefaultWorkQueue('Root')::WorkerFunc - thread 0x2517670 stopped.
-DefaultWorkQueue('Root')::WorkerFunc - thread 0x252b710 stopped.
-DefaultWorkQueue('Root')::WorkerFunc - thread 0x252b8b0 stopped.
-DefaultWorkQueue('Root')::WorkerFunc - thread 0x2520010 stopped.
+DefaultWorkQueue('Root') shutting down on thread 0x1c0ed80.
+DefaultWorkQueue('Root')::WorkerFunc - thread 0x20176a0 stopped.
+DefaultWorkQueue('Root')::WorkerFunc - thread 0x2013b10 stopped.
+DefaultWorkQueue('Root')::WorkerFunc - thread 0x20288d0 stopped.
+DefaultWorkQueue('Root')::WorkerFunc - thread 0x2013e20 stopped.
+DefaultWorkQueue('Root')::WorkerFunc - thread 0x201d030 stopped.
+DefaultWorkQueue('Root')::WorkerFunc - thread 0x2014120 stopped.
+DefaultWorkQueue('Root')::WorkerFunc - thread 0x2028730 stopped.
+DefaultWorkQueue('Root')::WorkerFunc - thread 0x2014690 stopped.
 PCZone Factory Type 'ZoneType_Octree' unregistered
 PCZone Factory Type 'ZoneType_Terrain' unregistered
 Unregistering ResourceManager for type BspLevel
