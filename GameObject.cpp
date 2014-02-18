@@ -36,13 +36,28 @@ void GameObject::addToSimulator() {
 	//rigidbody is dynamic if and only if mass is non zero, otherwise static
 	if (mass != 0.0f) 
 		shape->calculateLocalInertia(mass, inertia);
-	btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, motionState, shape, inertia);
+	
+    btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, motionState, shape, inertia);
 	rbInfo.m_restitution = 0.9f;
     rbInfo.m_friction = 0.1f;
-	body = new btRigidBody(rbInfo);
-	simulator->addObject(this);
+	
+    body = new btRigidBody(rbInfo);
+    body->setUserPointer(this);
+    
+    context = new CollisionContext();
+
+    if (kinematic) {
+        body->setCollisionFlags(body->getCollisionFlags() | 
+        btCollisionObject::CF_KINEMATIC_OBJECT);
+        body->setActivationState(DISABLE_DEACTIVATION);
+    }
+
+    simID = simulator->addObject(this);
 }
 
 btRigidBody* GameObject::getBody(){
 	return this->body;
+}
+
+void GameObject::update(float elapsedTime) {
 }

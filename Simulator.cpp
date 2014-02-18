@@ -1,5 +1,7 @@
 #include "Simulator.h"
 
+int Simulator::nextSimID = 0;
+
 Simulator::Simulator(){
 	// Collision configuration contains default setup for memory, collision setup.
 	collisionConfiguration = new btDefaultCollisionConfiguration();
@@ -24,10 +26,14 @@ Simulator::~Simulator() {
 
 }
 
-void Simulator::addObject (GameObject* o){
+int Simulator::addObject (GameObject* o){
 	objList.push_back(o);
 	//use default collision group/mask values (dynamic/kinematic/static)
 	dynamicsWorld->addRigidBody(o->getBody());
+
+    int id = nextSimID++;
+    idList.push_back(id);
+    return id;
 }
 
 bool Simulator::removeObject(GameObject* o) {
@@ -35,6 +41,32 @@ bool Simulator::removeObject(GameObject* o) {
 }
 
 void Simulator::stepSimulation(const Ogre::Real elapsedTime, int maxSubSteps, const Ogre::Real fixedTimestep){
-	//do we need to update positions in simulator for dynamic objects?
-	dynamicsWorld->stepSimulation(elapsedTime, maxSubSteps, fixedTimestep);
+    for (int i = 0; i != objList.size(); i++) {
+        idList[i] = 0;
+    }
+    
+    dynamicsWorld->stepSimulation(elapsedTime, maxSubSteps, fixedTimestep);
+    
+    for (unsigned int i = 0; i < objList.size(); i++) {
+        objList[i]->update(elapsedTime);
+    }
+}
+
+bool Simulator::checkHit(int o) {
+    for (int i = idList[o]; i < objList.size(); i++) {
+        if (i != o) {
+            objList[o]->context->hit = false;
+            dynamicsWorld->contactPairTest(
+                objList[o]->getBody(), 
+                objList[i]->getBody(), 
+                *(objList[o]->cCallBack)
+                );
+            
+            if (objList[o]->context->hit) { 
+                idList[o] = ++i;
+                return true;
+            }
+        }
+    }
+    return false;
 }

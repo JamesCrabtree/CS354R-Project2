@@ -1,3 +1,4 @@
+#include <iostream>
 #include <OgreEntity.h>
 #include <OgreSceneManager.h>
 #include "Ball.h"
@@ -15,7 +16,6 @@ Ball::Ball(
 : GameObject(nym, mgr, sim)
 {
     geom = mgr->createEntity(name, "sphere.mesh");
-    //geom->setMaterialName("BallColor/CubeMap");
     geom->setCastShadows(true);
     rootNode->attachObject(geom);
 
@@ -32,3 +32,12 @@ Ball::Ball(
     mass = m;
 }
 
+void Ball::update(float elapsedTime) {
+    while (simulator->checkHit(simID)) {
+        if (context->velNorm > 5.0 || context->velNorm < -5.0) {
+            if (context->theObject->name != name) {
+                std::cout << "bounce!" << std::endl;
+            }
+        }
+    }
+}

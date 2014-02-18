@@ -16,6 +16,8 @@ public:
         float restitution, 
         float friction
         );
+
+    void update(float elapsedTime);
 };
 
 #endif

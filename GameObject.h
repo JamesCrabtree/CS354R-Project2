@@ -4,13 +4,19 @@
 
 #include <btBulletDynamicsCommon.h>
 #include "OgreMotionState.h"
+#include "BulletContactCallback.h"
 #include <Ogre.h>
 
 class Simulator;
 
 class GameObject {
-	protected:
+	public:
 		Ogre::String name;
+        
+        CollisionContext* context;
+        BulletContactCallback* cCallBack; 	
+
+    protected:
 		Ogre::SceneManager* sceneMgr;
 		Simulator* simulator;
 		Ogre::SceneNode* rootNode;
@@ -20,12 +26,18 @@ class GameObject {
 		btTransform tr;
 		btVector3 inertia;
 		OgreMotionState* motionState;
-	public:
+
+        bool kinematic;
+        bool needsUpdates;
+        int simID;
+
+    public:
 		btCollisionShape* shape;
 		GameObject(Ogre::String, Ogre::SceneManager*, Simulator*);
 		void updateTransform();
 		void addToSimulator();
 		btRigidBody* getBody();
+        void update(float elapsedTime);
 }; 
 
 #endif

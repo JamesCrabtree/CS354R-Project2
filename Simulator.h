@@ -17,17 +17,20 @@ class Simulator {
 		btConstraintSolver* mConstraintsolver;
 		btCollisionWorld* mWorld;
 		Ogre::SceneManager* sceneMgr;
+
+        std::vector<int> idList;
+        static int nextSimID;
+
 	public:
 		std::deque<GameObject*> objList;
 		Simulator();
 		~Simulator();
 
-		void addObject(GameObject* o);
+		int addObject(GameObject* o);
 		bool removeObject(GameObject* o);
 		void stepSimulation(const Ogre::Real elapsedTime, int maxSubSteps = 1, 
 			const Ogre::Real fixedTimestep = 1.0f/60.0f);
-
-
+        bool checkHit(int o);
 };
 
 #endif
